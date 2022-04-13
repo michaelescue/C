@@ -1,0 +1,20 @@
+ wCC=x86_64-w64-mingw32-gcc
+ CC=gcc
+
+default:
+	echo "Select make l (linux) or make w (windows
+
+w: server.c
+	CC=x86_64-w64-mingw32-gcc
+l: server.c
+	CC=gcc
+
+server.o: server.c
+	$(CC) -c $^ -o $@ 
+
+server.exe: server.o
+	$(CC) -o $@ $^
+	
+clean:
+	rm server.o
+	rm server.exe

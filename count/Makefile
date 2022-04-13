@@ -2,19 +2,20 @@ wCC=x86_64-w64-mingw32-gcc
 CC=gcc
 
 default:
-	echo "clean, all"
+	"clean, all"
 
-all: server.c
+all:
+	make count.exe
 
-objonly: 
-	$(CC) -c $^ -o $@
+obj: 
+	$(CC) -c $^ -o $@ -g
 
-server.o: server.c
-	$(CC) -c $^ -o $@ 
+count.o: count.c
+	$(CC) -c $^ -o $@ -g
 
-server.exe: server.o
-	$(CC) -o $@ $^
+count.exe: count.o
+	$(CC) -o $@ $^ -g
 	
 clean:
-	rm server.o
-	rm server.exe
+	rm  *.o
+	rm  *.exe
